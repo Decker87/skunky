@@ -4,7 +4,7 @@ set -o pipefail  # Exit if any command in a pipeline fails
 # Create the tarball
 tarball_name="skunky-0.0.1.tar.gz"
 rm -f $tarball_name
-tar -czvf $tarball_name -C "../python-project" "."
+tar --exclude -czvf $tarball_name -C "../python-project" "."
 
 # Copy over the formula
 brew cleanup --scrub skunky
