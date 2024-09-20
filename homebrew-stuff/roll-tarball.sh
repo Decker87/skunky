@@ -3,7 +3,9 @@ set -o pipefail  # Exit if any command in a pipeline fails
 
 # Create the tarball
 tarball_name="skunky-0.0.1.tar.gz"
-rm -f $tarball_name
+
+# Remove this if it exists
+ls $tarball_name | xargs rm
 tar --exclude "venv" -czvf $tarball_name -C "../python-project" "."
 shasum -a 256 $tarball_name
 
@@ -12,6 +14,6 @@ cat formula.rb > /opt/homebrew/Library/Taps/decker87/homebrew-skunky/Formula/sku
 
 # Try it!
 brew cleanup --scrub skunky # Remove cached version
-rm /Users/adam/Library/Caches/Homebrew/downloads/*skunky-0.0.1.tar.gz # Above command doesn't always work
+ls /Users/adam/Library/Caches/Homebrew/downloads/*skunky-0.0.1.tar.gz | xargs rm # Above command doesn't always work
 brew reinstall --build-from-source Decker87/skunky/skunky
 # brew reinstall --debug --build-from-source Decker87/skunky/skunky
