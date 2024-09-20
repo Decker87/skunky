@@ -121,6 +121,15 @@ class Skunky < Formula
     virtualenv_install_with_resources
   end
 
+  # https://docs.brew.sh/Formula-Cookbook#service-files
+  service do
+    run opt_bin/"skunky-indexer"
+    name "skunky-indexer"
+    log_path var/"log/skuinky-indexer.log"
+    error_log_path var/"log/skuinky-indexer.log"
+    keep_alive true
+  end
+
   test do
     assert_match(1, 1)
   end

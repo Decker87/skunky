@@ -8,7 +8,8 @@ setup(
         'console_scripts': [
             # When I run 'skunky' from the command line, it will run the 'main' function in skunky/__init__.py
             # Homebrew will automatically install a bin to do this.
-            'skunky=skunky:main', 
+            'skunky=skunky:main',
+            'skunky-indexer=skunky:service_main'
         ],
     },
 )
